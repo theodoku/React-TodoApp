@@ -21,35 +21,33 @@ const TodosContainer = () => {
       completed: false,
     },
   ]);
-    
+
   const handleChange = (id) => {
-    setTodos((prevState) =>
-      prevState.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      })
-    );
-    };
-    
-    const addTodoItem = title => {
-        const newTodo = {
-            id: 4,
-            title: title,
-            completed: false,
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
         };
-        setTodos([...todos, newTodo])
+      }
+      return todo;
+    }));
+  };
+
+  const addTodoItem = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false,
     };
+    setTodos([...todos, newTodo]);
+  };
 
   return (
-      <div>
-          <Header />
-          <TodoInput addTodoProps={addTodoItem} />
-          <TodoList todos={todos} handleChangeProps={handleChange}/>
+    <div>
+      <Header />
+      <TodoInput addTodoProps={addTodoItem} />
+      <TodoList todos={todos} handleChangeProps={handleChange} />
     </div>
   );
 };

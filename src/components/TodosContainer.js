@@ -43,11 +43,15 @@ const TodosContainer = () => {
     setTodos([...todos, newTodo]);
   };
 
+  const deleteTodo = (id) => {
+    setTodos((prev) => [...prev.filter((todo) => todo.id !== id)]);
+  };
+
   return (
     <div>
       <Header />
       <TodoInput addTodoProps={addTodoItem} />
-      <TodoList todos={todos} handleChangeProps={handleChange} />
+      <TodoList todos={todos} handleChangeProps={handleChange} deleteTodoProps={deleteTodo} />
     </div>
   );
 };

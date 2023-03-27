@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const TodoInput = ({ addTodoProps }) => {
   const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
 
   const onChange = (e) => {
     setTitle(e.target.value);
@@ -10,17 +11,25 @@ const TodoInput = ({ addTodoProps }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodoProps(title);
-    setTitle('');
+    if (title.trim()) {
+      addTodoProps(title);
+      setTitle('');
+      setMessage('');
+    } else {
+      setMessage('Please add Item');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="todoInput">
-        <input id="todoInput" type="text" placeholder="Add Todo...." value={title} onChange={onChange} />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="todoInput">
+          <input id="todoInput" type="text" placeholder="Add Todo...." value={title} onChange={onChange} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <span>{message}</span>
+    </>
   );
 };
 

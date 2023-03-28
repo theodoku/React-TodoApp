@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 const TodoList = ({ todos, handleChangeProps, deleteTodoProps }) => (
-  <ul>
+  <ul className="todo-content">
     {todos.map((todo) => (
       <TodoItem
         key={todo.id}

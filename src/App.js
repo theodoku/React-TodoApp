@@ -3,9 +3,11 @@ import TodosContainer from './components/TodosContainer';
 
 function App() {
   return (
-    <>
-      <TodosContainer />
-    </>
+    <div className="wrapper">
+      <div className="todos">
+        <TodosContainer />
+      </div>
+    </div>
   );
 }
 

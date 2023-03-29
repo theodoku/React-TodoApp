@@ -43,7 +43,7 @@ bar that reders dynamic content.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://theodoku-react.netlify.app/)
 
 ## 🚀 Project Presentation <a name="live-demo"></a>
 

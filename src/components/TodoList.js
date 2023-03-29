@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todos, handleChangeProps, deleteTodoProps }) => (
+const TodoList = ({
+  todos, handleChangeProps, deleteTodoProps, setUpdate,
+}) => (
   <ul className="todo-content">
     {todos.map((todo) => (
       <TodoItem
@@ -10,6 +12,7 @@ const TodoList = ({ todos, handleChangeProps, deleteTodoProps }) => (
         todo={todo}
         handleChangeProps={handleChangeProps}
         deleteTodoProps={deleteTodoProps}
+        setUpdate={setUpdate}
       />
     ))}
   </ul>
@@ -18,13 +21,14 @@ const TodoList = ({ todos, handleChangeProps, deleteTodoProps }) => (
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       title: PropTypes.string.isRequired,
       completed: PropTypes.bool.isRequired,
     }),
   ).isRequired,
   handleChangeProps: PropTypes.func.isRequired,
   deleteTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 
 export default TodoList;

@@ -23,6 +23,18 @@ const TodosContainer = () => {
     },
   ]);
 
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(
+      todos.map((todo) => {
+        const res = { ...todo };
+        if (todo.id === id) {
+          res.title = updatedTitle;
+        }
+        return res;
+      }),
+    );
+  };
+
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
       if (todo.id === id) {
@@ -52,7 +64,13 @@ const TodosContainer = () => {
     <div>
       <Header />
       <TodoInput addTodoProps={addTodoItem} />
-      <TodoList todos={todos} handleChangeProps={handleChange} deleteTodoProps={deleteTodo} />
+      <TodoList
+        todos={todos}
+        handleChangeProps={handleChange}
+        deleteTodoProps={deleteTodo}
+        setUpdate={setUpdate}
+      />
+
     </div>
   );
 };

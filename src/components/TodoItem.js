@@ -36,38 +36,40 @@ const TodoItem = ({
 
   return (
     <div>
-      <li className="todo-items">
-        <div>
-          <div className="todo-content">
-            <input
-              type="checkbox"
-              checked={completed}
-              onChange={() => handleChangeProps(id)}
-              id={`todo-${id}`}
-              aria-label={`Mark ${title} as completed`}
-            />
-            <label htmlFor={`todo-${id}`} className="todo-text">{title}</label>
-            <div className="button-wrapper">
-              <button onClick={handleEditing} type="button" className="btn">
-                <BsFillPenFill />
-              </button>
-              <button onClick={() => deleteTodoProps(id)} type="button" className="btn">
-                <FaTrashAlt />
-              </button>
+      <ul>
+        <li className="todo-items">
+          <div>
+            <div className="todo-content">
+              <input
+                type="checkbox"
+                checked={completed}
+                onChange={() => handleChangeProps(id)}
+                id={`todo-${id}`}
+                aria-label={`Mark ${title} as completed`}
+              />
+              <label htmlFor={`todo-${id}`} className="todo-text">{title}</label>
+              <div className="button-wrapper">
+                <button onClick={handleEditing} type="button" className="btn">
+                  <BsFillPenFill />
+                </button>
+                <button onClick={() => deleteTodoProps(id)} type="button" className="btn">
+                  <FaTrashAlt />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <input
-          type="text"
-          value={title}
-          className="textInput"
-          style={editMode}
-          onChange={(e) => setUpdate(e.target.value, id)}
-          onKeyDown={handleUpdatedDone}
-          aria-label={`Edit ${title}`}
-        />
-      </li>
-      {inputError && <p className="text-error">Please provide input text before updating.</p>}
+          <input
+            type="text"
+            value={title}
+            className="textInput"
+            style={editMode}
+            onChange={(e) => setUpdate(e.target.value, id)}
+            onKeyDown={handleUpdatedDone}
+            aria-label={`Edit ${title}`}
+          />
+        </li>
+          {inputError && <p className="text-error">Please provide input text before updating.</p>}
+      </ul>
     </div>
   );
 };

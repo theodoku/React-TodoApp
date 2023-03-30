@@ -68,7 +68,7 @@ const TodoItem = ({
             aria-label={`Edit ${title}`}
           />
         </li>
-          {inputError && <p className="text-error">Please provide input text before updating.</p>}
+        {inputError && <p className="text-error">Please provide input text before updating.</p>}
       </ul>
     </div>
   );
